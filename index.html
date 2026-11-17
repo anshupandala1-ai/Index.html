@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#18324b">
+<title>The Players</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#18324b;--blue:#28618a;--bg:#f3f6fa;--ink:#1d2935;--muted:#687789;--line:#e1e7ee;--white:#fff;--green:#16865b;--red:#b53b45}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+header{background:var(--navy);color:white;padding:18px max(18px,calc((100% - 900px)/2));display:flex;justify-content:space-between;align-items:center;gap:12px}
+header strong{font-size:19px}header small{display:block;color:#c7d5e2;margin-top:3px}
+main{max-width:900px;margin:22px auto;padding:0 14px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 5px 20px #1c38500a}
+h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:0 0 8px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stats{background:#edf4fa;border-radius:12px;padding:15px}.stats b{font-size:26px;display:block;color:var(--navy)}
+label{display:block;font-size:13px;font-weight:650;color:#475668;margin:11px 0 5px}
+input,select,textarea{width:100%;border:1px solid #ccd6e0;border-radius:10px;padding:12px;font:inherit;background:white;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}button{border:0;border-radius:10px;padding:11px 15px;background:var(--blue);color:white;font-weight:650;font:inherit;cursor:pointer}
+button.secondary{background:#eaf0f5;color:var(--navy)}button.danger{background:#fff0f0;color:var(--red)}button:disabled{opacity:.5}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 12px}.tabs button{white-space:nowrap}.tabs button.active{background:var(--navy)}
+.item{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0}.item p{margin:5px 0;color:var(--muted);font-size:13px}
+.hidden{display:none!important}.muted{color:var(--muted)}.notice{border-left:4px solid #e0a23a}.tag{display:inline-block;background:#edf4fa;color:var(--navy);border-radius:99px;padding:3px 9px;font-size:12px}
+.error{color:var(--red);margin-top:8px}.success{color:var(--green);margin-top:8px}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px}
+footer{max-width:900px;margin:28px auto;padding:0 16px 30px;color:var(--muted);font-size:12px}
+@media(max-width:560px){.grid{grid-template-columns:1fr}header{padding:16px}.card{padding:15px}main{margin:12px auto}}
+
+/* Creative visual refresh — functionality unchanged */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap');
+:root{
+ --navy:#28234f;--blue:#6556c8;--bg:#f5f3fb;--ink:#24213b;--muted:#77738e;
+ --line:#e8e3f1;--white:#fff;--green:#16866d;--red:#bd4b65;
+}
+body{font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 8% 0%,#eee9ff 0,transparent 28%),radial-gradient(circle at 100% 20%,#e4f5f1 0,transparent 25%),var(--bg);color:var(--ink)}
+header{background:linear-gradient(115deg,#28234f 0%,#51439a 58%,#277f86 130%);box-shadow:0 8px 28px #30275b24}
+header strong{font-family:'Manrope','DM Sans',sans-serif;font-size:21px;letter-spacing:-.5px}
+header small{color:#d8d5f0}
+main{max-width:940px}
+.card{border:1px solid #e9e4f2;border-radius:20px;box-shadow:0 10px 30px #33265b0b,0 2px 7px #33265b08;padding:20px}
+h2,h3{font-family:'Manrope','DM Sans',sans-serif;letter-spacing:-.35px;color:#2c2850}
+h2{font-size:20px}
+.stats{background:linear-gradient(135deg,#eeeaff,#f7f5ff);border:1px solid #e4def9;border-radius:16px}
+.stats:nth-child(2){background:linear-gradient(135deg,#e5f5f1,#f4fbf9);border-color:#d9eee8}
+.stats b{font-family:'Manrope',sans-serif;color:#51439a}
+.stats:nth-child(2) b{color:#267d72}
+input,select,textarea{border:1px solid #dcd6e9;border-radius:12px;background:#fff;transition:border-color .18s,box-shadow .18s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#796bd2;box-shadow:0 0 0 3px #796bd21c}
+button{background:linear-gradient(135deg,#6658c8,#51439a);border-radius:12px;box-shadow:0 4px 10px #51439a20;transition:transform .15s,filter .15s}
+button:hover{filter:brightness(1.06);transform:translateY(-1px)}
+button.secondary{background:#efedf8;color:#51439a;box-shadow:none}
+button.danger{background:#fff0f3;color:#b34460;box-shadow:none}
+.tabs{padding:6px 0 14px}
+.tabs button{border-radius:999px;padding:10px 16px}
+.tabs button.active{background:linear-gradient(135deg,#28234f,#51439a)}
+.item{border:1px solid #e9e4f2;border-radius:15px;background:linear-gradient(180deg,#fff,#fdfcff);padding:15px}
+.item.notice{border-left:4px solid #d49a45;background:linear-gradient(110deg,#fffaf0,#fff)}
+.tag{background:#efedfa;color:#55489c;font-weight:700}
+label{color:#514d68;font-weight:700}
+.muted{color:#77738e}
+footer{line-height:1.6}
+@media(max-width:560px){.card{padding:16px}header strong{font-size:19px}}
+
+/* Brand / front page */
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#fff,#d9d4fb);color:#3b2f84;display:grid;place-items:center;font:800 17px 'Manrope',sans-serif;letter-spacing:-.5px;box-shadow:0 4px 12px #0003}
+.hero{position:relative;overflow:hidden;text-align:center;padding:44px 20px 38px;margin:0 0 18px;border-radius:24px;color:#fff;background:radial-gradient(circle at 15% 10%,#7b6be0 0,transparent 40%),radial-gradient(circle at 90% 100%,#277f86 0,transparent 45%),linear-gradient(135deg,#28234f,#51439a);box-shadow:0 18px 44px #30275b38}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;border:1px solid #ffffff22}
+.hero:before{width:260px;height:260px;top:-110px;right:-70px}.hero:after{width:180px;height:180px;bottom:-80px;left:-50px}
+.hero .mark{width:76px;height:76px;margin:0 auto 16px;border-radius:22px;background:linear-gradient(135deg,#fff,#dcd7fb);color:#3b2f84;display:grid;place-items:center;font:800 30px 'Manrope',sans-serif;box-shadow:0 10px 26px #0004;position:relative}
+.hero h1{margin:0;font:800 clamp(32px,9vw,52px)/1.05 'Manrope',sans-serif;letter-spacing:.14em;text-transform:uppercase;position:relative}
+.hero .rule{width:64px;height:3px;border-radius:3px;background:linear-gradient(90deg,#fff,#8be0d5);margin:16px auto 12px;position:relative}
+.hero p{margin:0;color:#e2def8;font-size:15px;letter-spacing:.06em;position:relative}
+@media(max-width:560px){.hero{padding:34px 16px 30px;border-radius:20px}}
+
+.seg{display:flex;gap:6px;background:#efedf8;border-radius:14px;padding:4px;margin:0 0 6px}
+.seg button{flex:1;box-shadow:none;padding:9px 8px;font-size:14px;border-radius:10px}
+.seg button.secondary{background:transparent}
+@media(max-width:560px){#loginView .grid{gap:26px}}
+.schwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin-top:6px}
+.schwrap table{border-collapse:collapse;width:100%;min-width:820px}
+.schwrap th,.schwrap td{padding:9px 6px;text-align:center;font-size:13px;border-bottom:1px solid var(--line)}
+.schwrap th{background:#f3f0fc;color:#2c2850;font-weight:700}
+.schwrap th.cur{background:#e2dcfa}
+.schwrap tr:last-child td{border-bottom:0}
+.schwrap th:first-child,.schwrap td:first-child{position:sticky;left:0;background:#fff;text-align:left;min-width:140px;z-index:1;box-shadow:1px 0 0 var(--line)}
+.schwrap th:first-child{background:#f3f0fc}
+.schwrap td small{display:block;color:var(--muted)}
+.schwrap input[type=checkbox]{width:20px;height:20px;padding:0;accent-color:#6556c8;cursor:pointer}
+.schwrap .tot{font-weight:700;color:#51439a;white-space:nowrap}
+.daily table{min-width:0;width:auto}.daily th,.daily td{padding:7px 3px;min-width:30px}
+.daily th:first-child,.daily td:first-child{min-width:130px;padding:7px 8px}
+.daily th small{display:block;font-weight:400;color:var(--muted);font-size:10px}
+.daily th.cur small{color:#51439a}
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
+.kpi{background:#f6f4fd;border-radius:12px;padding:10px 4px;text-align:center}
+.kpi b{display:block;font:800 20px 'Manrope',sans-serif;color:#51439a}.kpi span{font-size:11px;color:var(--muted)}
+.kpi.r b{color:#bd4b65}.kpi.g b{color:#267d72}
+.bar{height:8px;background:#e8e3f1;border-radius:9px;overflow:hidden;margin-top:12px}.bar i{display:block;height:100%;background:linear-gradient(90deg,#6556c8,#277f86)}
+.tag.ok{background:#e3f5ef;color:#267d72}.tag.warn{background:#fff3e0;color:#b36b00}.tag.off{background:#eee;color:#666}
+#analysisSummary .stats b{font-size:22px}
+@media(max-width:560px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}#analysisSummary{grid-template-columns:repeat(3,minmax(0,1fr))!important}#analysisSummary .stats{padding:10px}}
+header{position:relative}
+.clientwrap{max-width:520px;margin:0 auto}
+#menuBtn{width:40px;height:40px;padding:0;border-radius:12px;background:#ffffff26;box-shadow:none;color:#fff;font-size:24px;line-height:1;display:grid;place-items:center}
+#menuBtn:hover{background:#ffffff3d;transform:none}
+.pop{position:absolute;top:calc(100% + 8px);right:max(18px,calc((100% - 900px)/2));width:min(320px,calc(100vw - 24px));background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 44px #30275b40;z-index:50}
+.pop h3{margin:0 0 4px}
+@media(max-width:560px){.pop{right:12px}}
+</style></head>
+<body>
+<header><div class="brand"><div class="logo">TP</div><div><strong>The Players</strong><small>Registration · Records · Notice Board</small></div></div><button id="logout" class="secondary hidden">Log out</button>
+<button id="menuBtn" type="button" aria-label="Admin menu" aria-haspopup="true">⋮</button>
+<div id="adminMenu" class="pop hidden"><h3>Admin Login</h3><label>Username</label><input id="adminUser" value="admin" autocomplete="username"><label>Password</label><input id="adminPass" type="password" placeholder="Enter admin password" autocomplete="current-password"><button id="adminLogin" type="button" style="margin-top:14px;width:100%">Login as Admin</button><div id="adminMsg" class="error"></div></div></header>
+<main>
+<section id="loginView">
+<div class="hero"><div class="mark">TP</div><h1>The Players</h1><div class="rule"></div><p>Client Management Portal</p></div>
+<div class="card">
+<h2>Welcome</h2><p class="muted">New clients: please register first, then log in.</p>
+<div class="clientwrap">
+<div id="clientBox"><h3>Client</h3>
+<div class="seg"><button type="button" id="segReg">New Registration</button><button type="button" id="segLogin" class="secondary">Login</button></div>
+<form id="clientRegForm">
+<label>Full name *</label><input id="rName" required maxlength="80">
+<div class="grid"><div><label>Age *</label><input id="rAge" type="number" min="1" max="120" required></div><div><label>Gender *</label><select id="rGender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div></div>
+<label>Mobile number *</label><input id="rPhone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+<label>Create password *</label><input id="rPass" type="password" minlength="4" required>
+<label>Address (optional)</label><textarea id="rAddress" style="min-height:70px"></textarea>
+<button type="submit" style="margin-top:14px;width:100%">Register</button>
+</form>
+<div id="clientLoginBox" class="hidden"><label>Mobile number</label><input id="clientPhone" inputmode="tel" placeholder="Registered mobile number"><label>Password</label><input id="clientPass" type="password" placeholder="Client password"><button id="clientLogin" style="margin-top:14px;width:100%">Login as Client</button></div>
+</div>
+
+</div><div id="loginMsg" class="error"></div>
+</div></section>
+<section id="adminView" class="hidden">
+<div class="grid">
+<div class="stats"><span class="muted">Registered clients</span><b id="clientCount">0</b></div>
+<div class="stats"><span class="muted">Notices created</span><b id="noticeCount">0</b></div>
+</div>
+<nav class="tabs"><button class="active" data-tab="register">Register Client</button><button class="secondary" data-tab="meetings">Meetings</button><button class="secondary" data-tab="clients">Client Records</button><button class="secondary" data-tab="notices">Notice Management</button><button class="secondary" data-tab="schedule">Schedule</button><button class="secondary" data-tab="analysis">Client Analysis</button><button class="secondary" data-tab="password">Password</button></nav>
+<div id="registerTab" class="card"><h2>Client Registration</h2>
+<form id="registerForm">
+<label>Full name *</label><input id="cName" required maxlength="80">
+<div class="grid"><div><label>Age *</label><input id="cAge" type="number" min="1" max="120" required></div><div><label>Gender *</label><select id="cGender" required><option value="">Select gender</option><option>Male</option><option>Female</option><option>Other</option></select></div></div>
+<label>Phone number *</label><input id="cPhone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" required>
+<label>Client password *</label><input id="cPassword" type="password" minlength="4" required>
+<label>Address (optional)</label><textarea id="cAddress"></textarea>
+<div class="actions"><button type="submit">Register Client</button><button type="reset" class="secondary">Clear</button></div><div id="registerMsg"></div>
+</form></div>
+<div id="clientsTab" class="card hidden"><div class="topline"><h2>Registered Clients</h2><input id="searchClients" style="max-width:220px" placeholder="Search name / phone"></div><div id="clientList"></div></div>
+<div id="noticesTab" class="card hidden"><h2>Create Notice</h2>
+<form id="noticeForm"><label>Notice title *</label><input id="nTitle" required maxlength="100"><label>Notice details *</label><textarea id="nBody" required></textarea><label>Show notice to *</label><select id="nAudience"><option value="all">All clients</option><option value="selected">Selected clients</option></select><div id="recipientBox" class="hidden"><label>Select clients</label><div id="recipientList"></div></div><div class="actions"><button type="submit">Publish Notice</button></div><div id="noticeMsg"></div></form><hr style="border:0;border-top:1px solid var(--line);margin:20px 0"><h2>Published Notices</h2><div id="adminNoticeList"></div></div>
+<div id="passwordTab" class="card hidden"><h2>Change Admin Password</h2>
+<form id="apForm" style="max-width:420px"><label>Current password *</label><input id="apOld" type="password" required autocomplete="current-password"><label>New password *</label><input id="apNew" type="password" minlength="4" required autocomplete="new-password"><label>Confirm new password *</label><input id="apNew2" type="password" minlength="4" required autocomplete="new-password"><button type="submit" style="margin-top:14px;width:100%">Update Password</button><div id="apMsg"></div></form></div>
+<div id="meetingsTab" class="card hidden"><h2>Meetings</h2>
+<div id="mtgSummary" class="grid" style="margin-bottom:6px"></div>
+<h3 style="margin-top:18px">Today's Meetings</h3><div id="todayList"></div>
+<h3 style="margin-top:22px">Upcoming Meetings</h3><div id="upcomingList"></div></div>
+<div id="scheduleTab" class="card hidden"><h2>Schedule</h2>
+<div class="seg" style="max-width:360px;margin-bottom:10px"><button type="button" id="segDay">Daily (1–31)</button><button type="button" id="segMon" class="secondary">Monthly (Jan–Dec)</button></div>
+<div id="dayPane"><div class="topline" style="flex-wrap:wrap"><p class="muted" style="margin:0">Tick each day the client attended.</p><div class="actions" style="margin:0;align-items:center"><button class="secondary" id="dayPrev" type="button">‹</button><b id="dayLbl" style="min-width:120px;text-align:center"></b><button class="secondary" id="dayNext" type="button">›</button></div></div><div id="dayWrap" class="schwrap daily"></div></div>
+<div id="monPane" class="hidden"><div class="topline" style="flex-wrap:wrap"><p class="muted" style="margin:0">Tick the months that are done.</p><div class="actions" style="margin:0;align-items:center"><button class="secondary" id="schPrev" type="button">‹</button><b id="schYearLbl"></b><button class="secondary" id="schNext" type="button">›</button></div></div><div id="schedWrap" class="schwrap"></div></div></div>
+<div id="analysisTab" class="card hidden"><h2>Client Analysis</h2><p class="muted">Total meetings attended, last meeting date and days since. This comes automatically from the Daily schedule ticks.</p><div id="analysisList"></div></div>
+</section>
+<section id="clientView" class="hidden">
+<div class="seg" style="margin:14px 0 0"><button type="button" id="cSegBook">Book Meeting</button><button type="button" id="cSegNotice" class="secondary">Notices</button><button type="button" id="cSegPass" class="secondary">Password</button></div>
+<div id="cBookPane">
+<div class="card"><h2 id="clientWelcome">Welcome</h2><h3>Book a Meeting</h3>
+<form id="bookForm"><label>Date *</label><input id="bDate" type="date" required>
+<label>Note (optional)</label><textarea id="bNote" style="min-height:70px" maxlength="200" placeholder="Anything you want to share before the meeting"></textarea>
+<button type="submit" style="margin-top:14px;width:100%">Book Meeting</button><div id="bookMsg"></div></form></div>
+<div class="card"><h2>My Meetings</h2><div id="myMeetings"></div></div>
+</div>
+<div id="cNoticePane" class="hidden"><div class="card"><h2>Notice Board</h2><p class="muted">Only notices assigned to your account are shown here.</p><div id="clientNoticeList"></div></div></div>
+<div id="cPassPane" class="hidden"><div class="card"><h2>Change Password</h2>
+<form id="cpForm"><label>Current password *</label><input id="cpOld" type="password" required autocomplete="current-password"><label>New password *</label><input id="cpNew" type="password" minlength="4" required autocomplete="new-password"><label>Confirm new password *</label><input id="cpNew2" type="password" minlength="4" required autocomplete="new-password"><button type="submit" style="margin-top:14px;width:100%">Update Password</button><div id="cpMsg"></div></form></div></div>
+</section>
+</main>
+<footer>Prototype build: information is saved only in this browser on this device. This demo is not yet connected to a secure cloud database. Do not enter real client information until Firebase authentication and database security rules are configured.</footer>
+<script>
+const KEY='client_manager_demo_v1';
+let db=JSON.parse(localStorage.getItem(KEY)||'{"clients":[],"notices":[]}'), session=null;
+db.schedule=db.schedule||{};let schYear=new Date().getFullYear(),dY=new Date().getFullYear(),dM=new Date().getMonth();const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function addDays(d,n){return new Date(d.getFullYear(),d.getMonth(),d.getDate()+n)}
+function parseD(x){let a=x.split('-').map(Number);return new Date(a[0],a[1]-1,a[2])}
+function diffD(a,b){return Math.round((a-b)/86400000)}
+db.daily=db.daily||{};db.stay=db.stay||{};db.meetings=db.meetings||[];
+if(db.demoSeeded||db.demoSeeded2||db.demoSeeded3){
+ const ids=db.clients.filter(c=>c.phone.startsWith('98765000')).map(c=>c.id);
+ db.clients=db.clients.filter(c=>!ids.includes(c.id));
+ ids.forEach(id=>{delete db.schedule[id];delete db.daily[id];delete db.stay[id]});
+ db.meetings=db.meetings.filter(m=>!ids.includes(m.clientId));
+ db.notices.forEach(n=>{n.recipients=(n.recipients||[]).filter(x=>!ids.includes(x))});
+ delete db.demoSeeded;delete db.demoSeeded2;delete db.demoSeeded3;localStorage.setItem(KEY,JSON.stringify(db));
+}
+const $=id=>document.getElementById(id), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function save(){localStorage.setItem(KEY,JSON.stringify(db));render()}
+function show(id){['loginView','adminView','clientView'].forEach(x=>$(x).classList.toggle('hidden',x!==id));$('logout').classList.toggle('hidden',id==='loginView');$('menuBtn').classList.toggle('hidden',id!=='loginView');$('adminMenu').classList.add('hidden')}
+function msg(id,text,ok=false){$(id).className=ok?'success':'error';$(id).textContent=text}
+function renderSchedule(){
+ $('schYearLbl').textContent=schYear;const now=new Date(),curM=now.getFullYear()===schYear?now.getMonth():-1;
+ if(!db.clients.length){$('schedWrap').innerHTML='<p class="muted" style="padding:14px">Pehle clients register karein.</p>';return}
+ let h='<table><thead><tr><th>Client</th>'+MONTHS.map((m,i)=>`<th class="${i===curM?'cur':''}">${m}</th>`).join('')+'<th>Done</th></tr></thead><tbody>';
+ h+=db.clients.map(c=>{let sc=db.schedule[c.id]||{},n=0;let cells=MONTHS.map((m,i)=>{let k=schYear+'-'+String(i+1).padStart(2,'0'),on=!!sc[k];if(on)n++;return `<td><input type="checkbox" data-cid="${c.id}" data-key="${k}" ${on?'checked':''} aria-label="${esc(c.name)} ${m}"></td>`}).join('');return `<tr><td><b>${esc(c.name)}</b><small>${esc(c.phone)}</small></td>${cells}<td class="tot" id="tot_${c.id}">${n}/12</td></tr>`}).join('');
+ $('schedWrap').innerHTML=h+'</tbody></table>'}
+const MFULL=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function renderDaily(){
+ $('dayLbl').textContent=MFULL[dM]+' '+dY;
+ if(!db.clients.length){$('dayWrap').innerHTML='<p class="muted" style="padding:14px">Register clients first.</p>';return}
+ let dim=new Date(dY,dM+1,0).getDate(),now=new Date(),cur=(now.getFullYear()===dY&&now.getMonth()===dM)?now.getDate():-1,pre=dY+'-'+String(dM+1).padStart(2,'0')+'-';
+ let h='<table><thead><tr><th>Client</th>';
+ for(let d=1;d<=dim;d++)h+=`<th class="${d===cur?'cur':''}">${d}<small>${'SMTWTFS'[new Date(dY,dM,d).getDay()]}</small></th>`;
+ h+='<th>Total</th></tr></thead><tbody>';
+ h+=db.clients.map(c=>{let sc=db.daily[c.id]||{},n=0,cells='';for(let d=1;d<=dim;d++){let k=pre+String(d).padStart(2,'0'),on=!!sc[k];if(on)n++;cells+=`<td><input type="checkbox" data-cid="${c.id}" data-day="${k}" ${on?'checked':''}></td>`}return `<tr><td><b>${esc(c.name)}</b><small>${esc(c.phone)}</small></td>${cells}<td class="tot" id="dt_${c.id}">${n}/${dim}</td></tr>`}).join('');
+ $('dayWrap').innerHTML=h+'</tbody></table>'}
+function fmtD(x){if(!x)return '—';let d=parseD(x);return d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear()}
+function renderAnalysis(){
+ let T=new Date();T=new Date(T.getFullYear(),T.getMonth(),T.getDate());let ty=ymd(T);
+ $('analysisList').innerHTML=db.clients.length?db.clients.map(c=>{
+  let ks=Object.keys(db.daily[c.id]||{}).filter(k=>k<=ty).sort(),total=ks.length,last=ks.length?ks[ks.length-1]:'',days=last?diffD(T,parseD(last)):null;
+  let ago=days===null?'No visit yet':days===0?'Today':days===1?'1 day ago':days+' days ago';
+  let cls=days===null?'warn':days>=7?'warn':'ok';
+  return `<div class="item"><div class="topline"><div><b>${esc(c.name)}</b><p style="margin:2px 0 0">${esc(c.phone)}</p></div><span class="tag ${cls}">${ago}</span></div><div class="kpis" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="kpi g"><b>${total}</b><span>Total meetings</span></div><div class="kpi"><b style="font-size:15px;padding:3px 0">${fmtD(last)}</b><span>Last date</span></div><div class="kpi ${days>=7?'r':'g'}"><b>${days===null?'—':days}</b><span>Days since</span></div></div></div>`}).join(''):'<p class="muted">Register clients first.</p>'}
+function fmtT(t){let a=t.split(':').map(Number);return (a[0]%12||12)+':'+String(a[1]).padStart(2,'0')+' '+(a[0]<12?'AM':'PM')}
+function fmtDW(x){return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][parseD(x).getDay()]+', '+fmtD(x)}
+function mtgSort(a,b){return (a.date+a.time).localeCompare(b.date+b.time)}
+function renderMeetings(){
+ let ty=ymd(new Date()),all=db.meetings.slice().sort(mtgSort),td=all.filter(m=>m.date===ty),up=all.filter(m=>m.date>ty);
+ $('mtgSummary').innerHTML=`<div class="stats"><span class="muted">Today</span><b>${td.length}</b></div><div class="stats"><span class="muted">Upcoming</span><b>${up.length}</b></div>`;
+ const who=m=>db.clients.find(c=>c.id===m.clientId),item=(m,showDate)=>{let c=who(m);return `<div class="item"><div class="topline"><div><b>${esc(c?c.name:'Deleted client')}</b><p style="margin:2px 0 0">${esc(c?c.phone:'')}${m.note?' · '+esc(m.note):''}</p></div>${showDate?`<span class="tag">${esc(fmtDW(m.date))}</span>`:''}</div><div class="actions"><button class="danger" onclick="cancelMeeting('${m.id}')">Cancel meeting</button></div></div>`};
+ $('todayList').innerHTML=td.length?td.map(m=>item(m,false)).join(''):'<p class="muted">No meetings today.</p>';
+ $('upcomingList').innerHTML=up.length?up.map(m=>item(m,true)).join(''):'<p class="muted">No upcoming meetings.</p>'}
+function renderClientMeetings(){
+ let ty=ymd(new Date());
+ $('bDate').min=ty;
+ let mine=db.meetings.filter(m=>m.clientId===session.id),up=mine.filter(m=>m.date>=ty).sort(mtgSort),past=mine.filter(m=>m.date<ty).sort(mtgSort).reverse();
+ let it=(m,old)=>`<div class="item"><div class="topline"><div><b>${esc(fmtDW(m.date))}</b>${m.note?`<p style="margin:2px 0 0">${esc(m.note)}</p>`:''}</div><span class="tag ${old?'off':'ok'}">${old?'Past':'Booked'}</span></div>${old?'':`<div class="actions"><button class="danger" onclick="cancelMeeting('${m.id}')">Cancel</button></div>`}</div>`;
+ $('myMeetings').innerHTML=(up.length?'<h3>Upcoming</h3>'+up.map(m=>it(m,false)).join(''):'<p class="muted">No upcoming meetings. Book one above.</p>')+(past.length?'<h3 style="margin-top:18px">Past</h3>'+past.map(m=>it(m,true)).join(''):'')}
+function render(){
+ $('clientCount').textContent=db.clients.length;$('noticeCount').textContent=db.notices.length;
+ $('clientList').innerHTML=db.clients.length?db.clients.map(c=>`<div class="item"><div class="topline"><b>${esc(c.name)}</b><span class="tag">${esc(c.phone)}</span></div><p>Age: ${esc(c.age)} · ${esc(c.gender)} · Registered: ${esc(c.date)}</p><p>${esc(c.address||'No address added')}</p><div class="actions"><button class="danger" onclick="deleteClient('${c.id}')">Delete</button></div></div>`).join(''):'<p class="muted">No clients registered yet.</p>';
+ $('adminNoticeList').innerHTML=db.notices.length?db.notices.slice().reverse().map(n=>`<div class="item notice"><b>${esc(n.title)}</b><p>${esc(n.body)}</p><p>Audience: ${n.audience==='all'?'All clients':n.recipients.length+' selected client(s)'} · ${esc(n.date)}</p><button class="danger" onclick="deleteNotice('${n.id}')">Delete notice</button></div>`).join(''):'<p class="muted">No notices published.</p>';
+ $('recipientList').innerHTML=db.clients.length?db.clients.map(c=>`<label style="font-weight:400"><input type="checkbox" value="${c.id}" style="width:auto;margin-right:8px"> ${esc(c.name)} — ${esc(c.phone)}</label>`).join(''):'<p class="muted">Register clients first.</p>';
+ renderSchedule();renderDaily();renderAnalysis();renderMeetings();
+ if(session?.role==='client'){renderClientMeetings();let c=db.clients.find(x=>x.id===session.id);$('clientWelcome').textContent='Welcome, '+(c?.name||'Client');let ns=db.notices.filter(n=>n.audience==='all'||n.recipients.includes(session.id));$('clientNoticeList').innerHTML=ns.length?ns.slice().reverse().map(n=>`<div class="item notice"><b>${esc(n.title)}</b><p>${esc(n.body)}</p><p>${esc(n.date)}</p></div>`).join(''):'<p class="muted">There are no notices for you yet.</p>'}
+}
+$('adminLogin').onclick=()=>{if($('adminUser').value==='admin'&&$('adminPass').value===(db.adminPass||'admin123')){session={role:'admin'};show('adminView');render()}else msg('adminMsg','Incorrect admin username or password.')};
+$('clientLogin').onclick=()=>{let c=db.clients.find(x=>x.phone===$('clientPhone').value.trim()&&x.password===$('clientPass').value);if(c){session={role:'client',id:c.id};show('clientView');render()}else msg('loginMsg','Mobile number or password is incorrect.')};
+$('logout').onclick=()=>{session=null;cSeg('book');show('loginView')};
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>{x.classList.toggle('active',x===b);x.classList.toggle('secondary',x!==b)});['register','meetings','clients','notices','schedule','analysis','password'].forEach(t=>$(t+'Tab').classList.toggle('hidden',t!==b.dataset.tab));render()});
+$('registerForm').onsubmit=e=>{e.preventDefault();let phone=$('cPhone').value.trim();if(db.clients.some(c=>c.phone===phone)){msg('registerMsg','This phone number is already registered.');return}db.clients.push({id:crypto.randomUUID(),name:$('cName').value.trim(),age:$('cAge').value,gender:$('cGender').value,phone,password:$('cPassword').value,address:$('cAddress').value.trim(),date:new Date().toLocaleDateString()});save();e.target.reset();msg('registerMsg','Client registered successfully.',true)};
+$('nAudience').onchange=()=> $('recipientBox').classList.toggle('hidden',$('nAudience').value!=='selected');
+$('noticeForm').onsubmit=e=>{e.preventDefault();let audience=$('nAudience').value,recipients=[...$('recipientList').querySelectorAll('input:checked')].map(x=>x.value);if(audience==='selected'&&!recipients.length){msg('noticeMsg','Select at least one client.');return}db.notices.push({id:crypto.randomUUID(),title:$('nTitle').value.trim(),body:$('nBody').value.trim(),audience,recipients,date:new Date().toLocaleString()});save();e.target.reset();$('recipientBox').classList.add('hidden');msg('noticeMsg','Notice published.',true)};
+$('searchClients').oninput=()=>{let q=$('searchClients').value.toLowerCase();document.querySelectorAll('#clientList .item').forEach(x=>x.classList.toggle('hidden',!x.textContent.toLowerCase().includes(q)))};
+window.deleteClient=id=>{if(confirm('Delete this client and their assigned notice access?')){db.clients=db.clients.filter(c=>c.id!==id);delete db.schedule[id];db.meetings=db.meetings.filter(m=>m.clientId!==id);delete db.daily[id];delete db.stay[id];db.notices.forEach(n=>n.recipients=n.recipients.filter(x=>x!==id));save()}};
+window.deleteNotice=id=>{if(confirm('Delete this notice?')){db.notices=db.notices.filter(n=>n.id!==id);save()}};
+
+function clientTab(reg){$('clientRegForm').classList.toggle('hidden',!reg);$('clientLoginBox').classList.toggle('hidden',reg);$('segReg').classList.toggle('secondary',!reg);$('segLogin').classList.toggle('secondary',reg);$('loginMsg').textContent=''}
+$('segReg').onclick=()=>clientTab(true);$('segLogin').onclick=()=>clientTab(false);
+$('clientRegForm').onsubmit=e=>{e.preventDefault();let phone=$('rPhone').value.trim();if(db.clients.some(c=>c.phone===phone)){msg('loginMsg','This mobile number is already registered. Please log in.');return}
+ db.clients.push({id:crypto.randomUUID(),name:$('rName').value.trim(),age:$('rAge').value,gender:$('rGender').value,phone,password:$('rPass').value,address:$('rAddress').value.trim(),date:new Date().toLocaleDateString()});
+ save();e.target.reset();clientTab(false);$('clientPhone').value=phone;msg('loginMsg','Registration successful. Please log in with your mobile number and password.',true)};
+$('schedWrap').onchange=e=>{let t=e.target;if(t.type!=='checkbox')return;let id=t.dataset.cid,k=t.dataset.key;db.schedule[id]=db.schedule[id]||{};if(t.checked)db.schedule[id][k]=true;else delete db.schedule[id][k];localStorage.setItem(KEY,JSON.stringify(db));let n=Object.keys(db.schedule[id]).filter(x=>x.startsWith(schYear+'-')).length;$('tot_'+id).textContent=n+'/12'};
+$('schPrev').onclick=()=>{schYear--;renderSchedule()};$('schNext').onclick=()=>{schYear++;renderSchedule()};
+function schMode(day){$('dayPane').classList.toggle('hidden',!day);$('monPane').classList.toggle('hidden',day);$('segDay').classList.toggle('secondary',!day);$('segMon').classList.toggle('secondary',day)}
+$('segDay').onclick=()=>schMode(true);$('segMon').onclick=()=>schMode(false);
+$('dayPrev').onclick=()=>{dM--;if(dM<0){dM=11;dY--}renderDaily()};$('dayNext').onclick=()=>{dM++;if(dM>11){dM=0;dY++}renderDaily()};
+$('dayWrap').onchange=e=>{let t=e.target;if(t.type!=='checkbox')return;let id=t.dataset.cid,k=t.dataset.day;db.daily[id]=db.daily[id]||{};if(t.checked)db.daily[id][k]=true;else delete db.daily[id][k];localStorage.setItem(KEY,JSON.stringify(db));
+ let pre=dY+'-'+String(dM+1).padStart(2,'0')+'-',n=Object.keys(db.daily[id]).filter(x=>x.startsWith(pre)).length;$('dt_'+id).textContent=n+'/'+new Date(dY,dM+1,0).getDate();renderAnalysis()};
+window.cancelMeeting=id=>{if(confirm('Cancel this meeting?')){db.meetings=db.meetings.filter(m=>m.id!==id);save()}};
+function cSeg(n){[['book','cBookPane','cSegBook'],['notice','cNoticePane','cSegNotice'],['pass','cPassPane','cSegPass']].forEach(a=>{$(a[1]).classList.toggle('hidden',a[0]!==n);$(a[2]).classList.toggle('secondary',a[0]!==n)})}
+$('cSegBook').onclick=()=>cSeg('book');$('cSegNotice').onclick=()=>cSeg('notice');$('cSegPass').onclick=()=>cSeg('pass');
+$('cpForm').onsubmit=e=>{e.preventDefault();let c=db.clients.find(x=>x.id===session.id),o=$('cpOld').value,n=$('cpNew').value;
+ if(!c||o!==c.password){msg('cpMsg','Current password is incorrect.');return}
+ if(n!==$('cpNew2').value){msg('cpMsg','New passwords do not match.');return}
+ if(n===o){msg('cpMsg','New password must be different from the current one.');return}
+ c.password=n;save();e.target.reset();msg('cpMsg','Password changed. Use the new password next time you log in.',true)};
+$('apForm').onsubmit=e=>{e.preventDefault();let o=$('apOld').value,n=$('apNew').value;
+ if(o!==(db.adminPass||'admin123')){msg('apMsg','Current password is incorrect.');return}
+ if(n!==$('apNew2').value){msg('apMsg','New passwords do not match.');return}
+ if(n===o){msg('apMsg','New password must be different from the current one.');return}
+ db.adminPass=n;save();e.target.reset();msg('apMsg','Password changed. Use the new password next time you log in.',true)};
+$('bookForm').onsubmit=e=>{e.preventDefault();let d=$('bDate').value;
+ if(d<ymd(new Date())){msg('bookMsg','Please choose today or a future date.');return}
+ if(db.meetings.some(m=>m.clientId===session.id&&m.date===d)){msg('bookMsg','You already have a meeting on this date.');return}
+ db.meetings.push({id:crypto.randomUUID(),clientId:session.id,date:d,time:'',note:$('bNote').value.trim(),created:new Date().toLocaleString()});
+ save();e.target.reset();msg('bookMsg','Meeting booked for '+fmtD(d)+'.',true)};
+$('menuBtn').onclick=()=>{$('adminMenu').classList.toggle('hidden');$('adminMsg').textContent=''};
+$('adminPass').onkeydown=e=>{if(e.key==='Enter')$('adminLogin').click()};
+document.addEventListener('click',e=>{if(!e.target.closest('#adminMenu')&&!e.target.closest('#menuBtn'))$('adminMenu').classList.add('hidden')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('adminMenu').classList.add('hidden')});
+render();show('loginView');
+</script></body></html>
